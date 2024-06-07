@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 20:36:30 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/07 15:09:15 by lionelulm        ###   ########.fr       */
+/*   Updated: 2024/06/07 17:28:10 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,12 @@
 
 // =================================================================
 
-typedef struct
+typedef struct	mlx
 {
-
-}	
+	void	*window;
+	void	*context;
+	int		width;
+	int		height;
+}	mlx_t;
 
 #endif
