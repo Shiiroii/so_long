@@ -6,7 +6,7 @@
 /*   By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/21 17:12:53 by lulm              #+#    #+#             */
-/*   Updated: 2024/05/18 00:44:15 by lionelulm        ###   ########.fr       */
+/*   Updated: 2024/06/08 08:36:08 by lionelulm        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@
 # include <errno.h>
 # include "libft.h"
 
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 42
+# endif
+
 int		ft_atoi(const char *nptr);
 void	ft_bzero(void *s, size_t n);
 void	*ft_calloc(size_t count, size_t size);
@@ -36,7 +40,7 @@ int		ft_memcmp(const void *s1, const void *s2, size_t n);
 void	*ft_memcpy(void *dest, const void *src, size_t n);
 void	*ft_memmove(void *dest, const void *src, size_t n);
 void	*ft_memset(void *s, int c, size_t n);
-int	ft_putchar_fd(char c, int fd);
+int		ft_putchar_fd(char c, int fd);
 void	ft_putstr_fd(char *s, int fd);
 void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
@@ -57,5 +61,6 @@ char	*ft_substr(char const *s, unsigned int start, size_t len);
 int		ft_tolower(int c);
 int		ft_toupper(int c);
 void	handle_errors(char *error_message);
+char	*get_next_line(int fd);
 
 #endif

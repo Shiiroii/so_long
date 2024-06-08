@@ -3,33 +3,50 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:04:28 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/07 17:25:01 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/08 10:19:29 by lionelulm        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
+void	initialize_struct(t_game_init *game)
+{
+	t_game_obj	*game_obj;
+
+	*game = (t_game_init){0};
+	game->mlxptr = NULL;
+	game->winptr = NULL;
+	game->map_data.matrice = NULL;
+	game->init_res.name_map = NULL;
+	game->init_res.name_window = NULL;
+	game_obj = malloc(sizeof(t_game_obj));
+	if (!game_obj)
+		error_map(1);
+	game->init_obj = *game_obj;
+	free (game_obj);
+	return ;
+}
+
 int	main(int argc, char **argv)
 {
-	mlx_set_setting(MLX_MAXIMIZED, true);
-	mlx_t*	mlx;
+	t_game_init	game;
 
-	mlx = mlx_init(WIDTH, HEIGHT, "42", true);
-	if (!mlx)
-		ft_error();
-	// ajouter ce qui est necessaire
-
-	mlx_image_t*	img;
-
-	img = mlx_new_image(mlx, 256, 256); //changer a la taille du fichier
-	if (!img || (mlx_image_to_window(mlx, img, 0, 0) < 0))
-		ft_error();
-	mlx_put_pixel(img, 0, 0, 0xFF0000FF);
-	mlx_looh_hook(mlx, ft_hook, mlx);
-	mlx_loop(mlx);
-	mlx_terminate(mlx);
-	return (EXIT_SUCCESS)
+	initialize_struct(&game);
+	if (argc != 2)
+		error_map(2);
+	game.argc_temp = argc;
+	game.argv_temp = argv;
+	if (open_map(argv[1], &game))
+	{
+		initialize_game(&game);
+		start_game(&game);
+		mlx_loop(game.mlxptr);
+	}
+	else
+		error_map(3);
+	exit_program(&game);
+	return (0);
 }

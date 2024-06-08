@@ -6,7 +6,7 @@
 #    By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/05 12:45:50 by lulm              #+#    #+#              #
-#    Updated: 2024/03/31 15:19:05 by lionelulm        ###   ########.fr        #
+#    Updated: 2024/06/08 08:37:06 by lionelulm        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ RM		= rm -f
 SRCS =	ft_atoi.c		\
 		ft_bzero.c		\
 		ft_calloc.c		\
+		ft_getnextline.c\
 		ft_isalnum.c	\
 		ft_isalpha.c	\
 		ft_isascii.c	\

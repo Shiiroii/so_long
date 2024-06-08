@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   move.c                                             :+:      :+:    :+:   */
+/*   ft_putstr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/07 14:41:18 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/07 14:45:52 by lionelulm        ###   ########.fr       */
+/*   Created: 2023/12/09 07:45:51 by lulm              #+#    #+#             */
+/*   Updated: 2024/02/01 09:58:12 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "ft_printf.h"
 
-void	ft_move(void *input)
+int	ft_putstr(char *str)
 {
-	mlx_t *mlx;
+	int	i;
 
-	mlx = input;
-
-	
+	i = 0;
+	if (str == NULL)
+		return (ft_putstr("(null)"));
+	while (str[i] != '\0')
+	{
+		ft_putchar(str[i]);
+		i++;
+	}
+	return (i);
 }
