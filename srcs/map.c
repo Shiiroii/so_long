@@ -6,7 +6,7 @@
 /*   By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 08:19:58 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/08 10:11:18 by lionelulm        ###   ########.fr       */
+/*   Updated: 2024/06/08 11:10:24 by lionelulm        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,4 +55,31 @@ int	draw_map(t_game_init *init_game)
 	return (0);
 }
 
+void	free_map(t_game_init *init_game)
+{
+	int	i;
+
+	if (init_game->map_data.matrice == NULL)
+		return ;
+	i = 0;
+	while (init_game->map_data.matrice[i])
+	{
+		free(init_game->map_data.matrice[i]);
+		i++;
+	}
+	free(init_game->map_data.matrice);
+	init_game->map_data.matrice = NULL;
+	return ;
+}
+
+void	free_image(t_game_init *init_game)
+{
+	mlx_destroy_image(init_game->mlxptr, init_game->init_obj.player);
+	mlx_destroy_image(init_game->mlxptr, init_game->init_obj.wall);
+	mlx_destroy_image(init_game->mlxptr, init_game->init_obj.floor);
+	mlx_destroy_image(init_game->mlxptr, init_game->init_obj.collectible);
+	mlx_destroy_image(init_game->mlxptr, init_game->init_obj.exit_open);
+	mlx_destroy_image(init_game->mlxptr, init_game->init_obj.exit_close);
+	init_game->init_obj = (t_game_obj){0};
+}
 //===========BWAH===========//

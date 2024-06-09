@@ -6,19 +6,21 @@
 #    By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/07 17:14:24 by lulm              #+#    #+#              #
-#    Updated: 2024/06/08 11:04:27 by lionelulm        ###   ########.fr        #
+#    Updated: 2024/06/09 09:12:20 by lionelulm        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= so_long
 
-HEADER	= so_long.h
+LIBMLX	= ./MLX
 
 CC		= cc
 
-CFLAGS	= -Wextra -Wall -Werror
+CFLAGS	= -Wextra -Wall -Werror -Wunreachable-code -0fast
 
-MLFLAG	= -lmlx_Linux -lft -lmlx -lm -lXext -lX11
+MLFLAG	= -I ./include -I $(LIBMLX)/include
+
+LIBS 	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
 
 RM		= rm -f
 
@@ -32,8 +34,6 @@ SRCS	=	errors.c			\
 			initialize_map.c	\
 			initialize_utils.c
 
-LIBMLX	= ../MLX42
-
 OBJS	= ${SRCS:.c=.o}
 
 LIBFT	= utils/libft/libft.a
@@ -42,23 +42,26 @@ PRINTF	= utils/ft_printf/libftprintf.a
 
 MLX		= MLX/libmlx.a
 
-all:	${NAME}
+all: liblmx ${NAME}
 
 $(NAME): $(OBJS) $(LIBFT) $(PRINTF) $(MLX)
-		$(CC) $(CFLAGS) $(MLFLAG) $(OBJS) $(LIBFT) $(PRINTF) $(MLX) -o $(NAME)
+	$(CC) $(CFLAGS) $(MLFLAG) $(OBJS) $(LIBFT) $(PRINTF) $(MLX) -o $(NAME)
+
+%.o: %.c $(HEADER)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-		rm -f $(OBJS)
-		$(MAKE) -C ./libft fclean
-		$(MAKE) -C ./ft_printf fclean
-		$(MAKE)	-C $(LIBMLX) clean
+	rm -f $(OBJS)
+	$(MAKE) -C ./utils/libft fclean
+	$(MAKE) -C ./utils/ft_printf fclean
+	$(MAKE) -C $(LIBMLX) clean
 
 fclean: clean
-		rm -f $(NAME)
-		$(MAKE) -C ./libft fclean
-		$(MAKE) -C ./ft_printf fclean
-		$(MAKE)	-C $(LIBMLX) clean
+	rm -f $(NAME)
+	$(MAKE) -C ./utils/libft fclean
+	$(MAKE) -C ./utils/ft_printf fclean
+	$(MAKE) -C $(LIBMLX) clean
 
-re:		fclean all
+re: fclean all
 
 .PHONY: all clean fclean re

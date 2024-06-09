@@ -6,7 +6,7 @@
 /*   By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 20:36:30 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/08 11:02:19 by lionelulm        ###   ########.fr       */
+/*   Updated: 2024/06/08 11:10:46 by lionelulm        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,8 @@ void	initialize_game(t_game_init	*init_game);
 void	error_map(int nb);
 void	error_init(int nb);
 int		ft_moves(int key, t_game_init *init_game);
+void	free_image(t_game_init *init_game);
+void	free_map(t_game_init *init_game);
 
 // ======================================================================
 
