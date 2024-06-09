@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   game.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 09:50:02 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/08 10:44:53 by lionelulm        ###   ########.fr       */
+/*   Updated: 2024/06/09 09:54:17 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,20 @@ void	you_win(t_game_init *init_game)
 	exit_program(init_game);
 }
 
+int	print_count_moves(t_game_init *init_game)
+{
+	static int	starting_count = -1;
+	int			player_count;
+
+	player_count = init_game->game_data.move_count;
+	if (player_count != starting_count)
+	{
+		ft_printf("You moved %d times!\n", player_count);
+		starting_count = player_count;
+	}
+	return (1);
+}
+
 int	ft_moving(t_game_init *init_game, int col, int row)
 {
 	int	next_col;
@@ -78,18 +92,4 @@ void	start_game(t_game_init *init_game)
 	mlx_hook(init_game->mlxptr, 17, 0, exit_program, init_game);
 	mlx_hook(init_game->winptr, 2, 1L << 0, ft_moves, init_game);
 	mlx_loop_hook(init_game->mlxptr, &draw_map, init_game);
-}
-
-int	print_count_moves(t_game_init *init_game)
-{
-	static int	starting_count = -1;
-	int			player_count;
-
-	player_count = init_game->game_data.move_count;
-	if (player_count != starting_count)
-	{
-		ft_printf("You moved %d times!\n", player_count);
-		starting_count = player_count;
-	}
-	return (1);
 }

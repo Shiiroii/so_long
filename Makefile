@@ -3,58 +3,56 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+         #
+#    By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/07 17:14:24 by lulm              #+#    #+#              #
-#    Updated: 2024/06/09 09:12:20 by lionelulm        ###   ########.fr        #
+#    Updated: 2024/06/09 09:49:45 by lulm             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= so_long
 
-LIBMLX	= ./MLX
+LIBMLX	= MLX/libmlx42.a
 
 CC		= cc
 
-CFLAGS	= -Wextra -Wall -Werror -Wunreachable-code -0fast
+CFLAGS	= -Wextra -Wall -Werror -g3
 
-MLFLAG	= -I ./include -I $(LIBMLX)/include
+HEADERS	= -I ./include -I $(LIBMLX)/include
 
-LIBS 	= $(LIBMLX)/build/libmlx42.a -ldl -lglfw -pthread -lm
+LIBS 	= -Iinclude -ldl -lglfw -pthread -lm
 
 RM		= rm -f
 
-SRCS	=	errors.c			\
-			main.c				\
-			map.c				\
-			moves.c				\
-			game.c				\
-			exit.c				\
-			initialize_game.c	\
-			initialize_map.c	\
-			initialize_utils.c
+SRCS	=	srcs/errors.c			\
+			srcs/main.c				\
+			srcs/map.c				\
+			srcs/moves.c			\
+			srcs/game.c				\
+			srcs/exit.c				\
+			srcs/initialize_game.c	\
+			srcs/initialize_map.c	\
+			srcs/initialize_utils.c
 
-OBJS	= ${SRCS:.c=.o}
+OBJS	= $(SRCS:.c=.o)
 
 LIBFT	= utils/libft/libft.a
 
 PRINTF	= utils/ft_printf/libftprintf.a
 
-MLX		= MLX/libmlx.a
+all: $(NAME)
 
-all: liblmx ${NAME}
-
-$(NAME): $(OBJS) $(LIBFT) $(PRINTF) $(MLX)
-	$(CC) $(CFLAGS) $(MLFLAG) $(OBJS) $(LIBFT) $(PRINTF) $(MLX) -o $(NAME)
-
-%.o: %.c $(HEADER)
-	$(CC) $(CFLAGS) -c $< -o $@
+$(NAME): $(OBJS)
+	@$(MAKE) all -C ./printf
+	@$(MAKE) all -C ./libft
+	@cp $(LIBFT) (PRINTF) $(NAME)
+	@cc $(CFLAGS) $(LIBS) $(OBJS) $(LIBFT) $(PRINTF) $(LIBMLX) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
-	$(MAKE) -C ./utils/libft fclean
-	$(MAKE) -C ./utils/ft_printf fclean
-	$(MAKE) -C $(LIBMLX) clean
+	$(MAKE) fclean -C ./utils/libft
+	$(MAKE) fclean -C ./utils/ft_printf
+	$(MAKE) clean -C $(LIBMLX)
 
 fclean: clean
 	rm -f $(NAME)

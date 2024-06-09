@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 20:36:30 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/08 11:10:46 by lionelulm        ###   ########.fr       */
+/*   Updated: 2024/06/09 09:53:40 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 
 # include <string.h>
 # include <fcntl.h>
-# include <struct.h>
 
 // ============================= ASSETS ============================
 
@@ -120,6 +119,8 @@ typedef struct s_game_init
 
 void	start_game(t_game_init *init_game);
 int		exit_program(t_game_init *init_game);
+void	restart(t_game_init *init_game);
+int		ft_moving(t_game_init *init_game, int col, int row);
 
 // ================================ MAP =================================
 
