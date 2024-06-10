@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_utils.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 08:22:33 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/08 10:10:37 by lionelulm        ###   ########.fr       */
+/*   Updated: 2024/06/10 12:48:09 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
 int	row_count(t_game_init *init_game)
 {
 	int	i;

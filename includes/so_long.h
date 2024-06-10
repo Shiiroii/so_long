@@ -6,16 +6,16 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 20:36:30 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/09 09:53:40 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/10 14:14:55 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-#include "../utils/libft/libft.h"
-#include "../utils/ft_printf/ft_printf.h"
-#include "../MLX/mlx.h"
+# include "../utils/libft/libft.h"
+# include "../utils/ft_printf/ft_printf.h"
+# include "../MLX42/mlx.h"
 
 # include <string.h>
 # include <fcntl.h>
@@ -104,10 +104,10 @@ typedef struct s_map_data
 
 typedef struct s_game_init
 {
-	void	*mlxptr;
-	void	*winptr;
-	int		argc_temp;
-	char	**argv_temp;
+	void		*mlxptr;
+	void		*winptr;
+	int			argc_temp;
+	char		**argv_temp;
 	t_map_data	map_data;
 	t_game_data	game_data;
 	t_game_pos	init_pos;
@@ -126,6 +126,9 @@ int		ft_moving(t_game_init *init_game, int col, int row);
 
 int		open_map(char *map, t_game_init *init_game);
 int		draw_map(t_game_init *init_game);
+int		map_dimension(t_game_init *init_game);
+int		map_extension(char *map);
+int		is_map_valid(t_game_init *init_game);
 
 // ============================ INITIALIZE ==============================
 

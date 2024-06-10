@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   exit.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 09:50:05 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/08 10:23:19 by lionelulm        ###   ########.fr       */
+/*   Updated: 2024/06/10 12:46:35 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,17 +26,17 @@ void	clean_all(t_game_init *init_game)
 	}
 }
 
-void restart(t_game_init *init_game)
-{
-	free_image(init_game);
-	free_map(init_game);
-	free(init_game->init_res.name_map);
-	free(init_game->init_res.name_window);
-	mlx_destroy_window(init_game->mlxptr, init_game->winptr);
-	mlx_destroy_display(init_game->mlxptr);
-	free(init_game->mlxptr);
-	main(init_game->argc_temp, init_game->argv_temp);
-}
+// void restart(t_game_init *init_game)
+// {
+// 	free_image(init_game);
+// 	free_map(init_game);
+// 	free(init_game->init_res.name_map);
+// 	free(init_game->init_res.name_window);
+// 	mlx_destroy_window(init_game->mlxptr, init_game->winptr);
+// 	mlx_destroy_display(init_game->mlxptr);
+// 	free(init_game->mlxptr);
+// 	main(init_game->argc_temp, init_game->argv_temp);
+// }
 
 int	exit_program(t_game_init *init_game)
 {

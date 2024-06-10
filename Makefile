@@ -6,17 +6,17 @@
 #    By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/07 17:14:24 by lulm              #+#    #+#              #
-#    Updated: 2024/06/09 09:49:45 by lulm             ###   ########.fr        #
+#    Updated: 2024/06/10 14:24:19 by lulm             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= so_long
 
-LIBMLX	= MLX/libmlx42.a
+LIBMLX	= MLX42
 
 CC		= cc
 
-CFLAGS	= -Wextra -Wall -Werror -g3
+CFLAGS	= -Wextra -Wall -Werror -O3
 
 HEADERS	= -I ./include -I $(LIBMLX)/include
 
@@ -40,25 +40,27 @@ LIBFT	= utils/libft/libft.a
 
 PRINTF	= utils/ft_printf/libftprintf.a
 
+MLX		= MLX42/libmlx.a
+
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	@$(MAKE) all -C ./printf
-	@$(MAKE) all -C ./libft
-	@cp $(LIBFT) (PRINTF) $(NAME)
-	@cc $(CFLAGS) $(LIBS) $(OBJS) $(LIBFT) $(PRINTF) $(LIBMLX) -o $(NAME)
+	@$(MAKE) all -C ./utils/ft_printf
+	@$(MAKE) all -C ./utils/libft
+	@$(MAKE) all -C ./MLX42
+	@cc $(CFLAGS) $(LIBS) $(OBJS) $(LIBFT) $(PRINTF) $(MLX) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
 	$(MAKE) fclean -C ./utils/libft
 	$(MAKE) fclean -C ./utils/ft_printf
-	$(MAKE) clean -C $(LIBMLX)
+	$(MAKE) clean -C ./MLX42
 
 fclean: clean
 	rm -f $(NAME)
 	$(MAKE) -C ./utils/libft fclean
 	$(MAKE) -C ./utils/ft_printf fclean
-	$(MAKE) -C $(LIBMLX) clean
+	$(MAKE) -C ./MLX42 clean
 
 re: fclean all
 
