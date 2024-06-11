@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 20:36:30 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/10 14:14:55 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/11 05:42:01 by lionelulm        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,9 @@
 
 # include "../utils/libft/libft.h"
 # include "../utils/ft_printf/ft_printf.h"
-# include "../MLX42/mlx.h"
+// # include "../MLX/mlx.h"
+# include "../libmlx/linux/mlx.h"
+# include "../libmlx/macos/mlx.h"
 
 # include <string.h>
 # include <fcntl.h>

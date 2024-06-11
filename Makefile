@@ -3,20 +3,28 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+         #
+#    By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/07 17:14:24 by lulm              #+#    #+#              #
-#    Updated: 2024/06/10 14:24:19 by lulm             ###   ########.fr        #
+#    Updated: 2024/06/11 05:48:12 by lionelulm        ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= so_long
 
-LIBMLX	= MLX42
-
 CC		= cc
 
 CFLAGS	= -Wextra -Wall -Werror -O3
+
+ifeq ($(shell uname), Linux)
+	LIBMLX			= ./libmlx/linux
+	LIBMLX_INC		= ./libmlx/linux
+	LIBMLX_FLAGS	= -lmlx -lXext -lX11 -lm -lz
+else
+	LIBMLX   = ./libmlx/macos
+	LIBMLX_INC   = ./libmlx/macos
+	LIBMLX_FLAGS = -lmlx -framework openGL -framework AppKit
+endif
 
 HEADERS	= -I ./include -I $(LIBMLX)/include
 
@@ -40,27 +48,27 @@ LIBFT	= utils/libft/libft.a
 
 PRINTF	= utils/ft_printf/libftprintf.a
 
-MLX		= MLX42/libmlx.a
+MLX		= libmlx/libmlx.a
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
 	@$(MAKE) all -C ./utils/ft_printf
 	@$(MAKE) all -C ./utils/libft
-	@$(MAKE) all -C ./MLX42
-	@cc $(CFLAGS) $(LIBS) $(OBJS) $(LIBFT) $(PRINTF) $(MLX) -o $(NAME)
+	@$(MAKE) all -C $(LIBMLX)
+	@cc $(CFLAGS) $(LIBS) $(OBJS) $(LIBFT) $(PRINTF) $(LIBMLX) -o $(NAME)
 
 clean:
 	rm -f $(OBJS)
 	$(MAKE) fclean -C ./utils/libft
 	$(MAKE) fclean -C ./utils/ft_printf
-	$(MAKE) clean -C ./MLX42
+	$(MAKE) clean -C $(LIBMLX)
 
 fclean: clean
 	rm -f $(NAME)
-	$(MAKE) -C ./utils/libft fclean
-	$(MAKE) -C ./utils/ft_printf fclean
-	$(MAKE) -C ./MLX42 clean
+	$(MAKE) fclean -C ./utils/libft
+	$(MAKE) fclean -C ./utils/ft_printf
+	$(MAKE) clean -C $(LIBMLX)
 
 re: fclean all
 
