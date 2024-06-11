@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   is_it_valid.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 11:16:20 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/09 08:46:10 by lionelulm        ###   ########.fr       */
+/*   Updated: 2024/06/11 16:52:08 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,9 @@
 
 int	is_every_obj_valid(t_game_init *init_game)
 {
-	if (init_game->game_data.player_count != 1)
-		return (0);
-	if (init_game->game_data.collectible_count < 1)
-		return (0);
-	if (init_game->game_data.exit_count != 1)
+	if (!(init_game->game_data.player_count == 1
+			&& init_game->game_data.exit_count == 1
+			&& init_game->game_data.collectible_count > 0))
 		return (0);
 	return (1);
 }
@@ -31,21 +29,22 @@ int	(valid_map_objs(t_game_init *init_game))
 	row = -1;
 	while (init_game->map_data.matrice[++row])
 	{
-		col = -0;
-		while (init_game->map_data.matrice[row][col++])
+		col = 0;
+		while (init_game->map_data.matrice[row][col])
 		{
-			if (init_game->map_data.matrice[row][col] != WALL)
+			if (init_game->map_data.matrice[row][col] == WALL)
 				init_game->game_data.wall_count++;
-			else if (init_game->map_data.matrice[row][col] != FLOOR)
+			else if (init_game->map_data.matrice[row][col] == FLOOR)
 				init_game->game_data.floor_count++;
-			else if (init_game->map_data.matrice[row][col] != PLAYER)
+			else if (init_game->map_data.matrice[row][col] == PLAYER)
 				init_game->game_data.player_count++;
-			else if (init_game->map_data.matrice[row][col] != COLLECTIBLE)
+			else if (init_game->map_data.matrice[row][col] == COLLECTIBLE)
 				init_game->game_data.collectible_count++;
-			else if (init_game->map_data.matrice[row][col] != EXIT)
+			else if (init_game->map_data.matrice[row][col] == EXIT)
 				init_game->game_data.exit_count++;
 			else if (init_game->map_data.matrice[row][col] != '\n')
 				return (0);
+			col++;
 		}
 	}
 	return (is_every_obj_valid(init_game));

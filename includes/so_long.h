@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 20:36:30 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/11 05:42:01 by lionelulm        ###   ########.fr       */
+/*   Updated: 2024/06/11 11:56:10 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,7 @@
 
 # include "../utils/libft/libft.h"
 # include "../utils/ft_printf/ft_printf.h"
-// # include "../MLX/mlx.h"
-# include "../libmlx/linux/mlx.h"
-# include "../libmlx/macos/mlx.h"
-
+# include "../utils/MLX/mlx.h"
 # include <string.h>
 # include <fcntl.h>
 
@@ -41,7 +38,6 @@
 # define DOWN 65364
 # define LEFT 65361
 # define RIGHT 65363
-# define RESTART 114
 
 // ============================== UTILS ============================
 
@@ -57,6 +53,10 @@
 typedef struct s_game_obj
 {
 	void		*player;
+	void		*player_up;
+	void		*player_down;
+	void		*player_left;
+	void		*player_right;
 	void		*wall;
 	void		*floor;
 	void		*collectible;

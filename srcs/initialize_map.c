@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   initialize_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 08:38:36 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/08 09:13:11 by lionelulm        ###   ########.fr       */
+/*   Updated: 2024/06/11 16:44:56 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int count_line(int fd)
+int	count_line(int fd)
 {
 	int		i;
 	int		count;
@@ -71,8 +71,6 @@ int	read_map(int fd, t_game_init *init_game)
 	int		i;
 	char	*line;
 
-	i = 0;
-	line = NULL;
 	init_game->map_data.matrice
 		= ft_calloc(init_game->map_data.first_mat + 1, sizeof(char *));
 	if (!init_game->map_data.matrice)
@@ -80,6 +78,8 @@ int	read_map(int fd, t_game_init *init_game)
 		free_map(init_game);
 		return (0);
 	}
+	i = 0;
+	line = NULL;
 	while (1)
 	{
 		line = get_next_line(fd);
@@ -109,11 +109,12 @@ int	open_map(char *map, t_game_init *init_game)
 		free_map(init_game);
 		return (0);
 	}
-	if (read_map(fd, init_game))
+	if (!read_map(fd, init_game))
 	{
+		ft_printf("testdfsd");
 		close(fd);
 		free_map(init_game);
-		return (1);
+		return (0);
 	}
 	close (fd);
 	return (1);

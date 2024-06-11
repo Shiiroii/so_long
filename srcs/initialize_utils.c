@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 08:22:33 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/10 12:48:09 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/11 16:49:59 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,9 +75,9 @@ int	map_extension(char *map)
 		error_map(1);
 		return (0);
 	}
-	else if (!extension_file || !ft_strcmp(extension_file, extension))
-		return (0);
 	else if (!extension_file || !ft_strcmp(extension_file, ""))
+		return (0);
+	else if (extension_file && !ft_strcmp(extension_file, extension))
 	{
 		if (i >= FILES)
 			return (0);

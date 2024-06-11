@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:04:28 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/08 10:19:29 by lionelulm        ###   ########.fr       */
+/*   Updated: 2024/06/11 16:36:59 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	initialize_struct(t_game_init *game)
 	game->init_res.name_map = NULL;
 	game->init_res.name_window = NULL;
 	game_obj = malloc(sizeof(t_game_obj));
-	if (!game_obj)
+	if (game_obj == NULL)
 		error_map(1);
 	game->init_obj = *game_obj;
 	free (game_obj);

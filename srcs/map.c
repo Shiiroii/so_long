@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 08:19:58 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/10 14:16:59 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/11 16:28:55 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,4 +82,3 @@ void	free_image(t_game_init *init_game)
 	mlx_destroy_image(init_game->mlxptr, init_game->init_obj.exit_close);
 	init_game->init_obj = (t_game_obj){0};
 }
-//===========BWAH===========//
