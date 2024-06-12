@@ -6,13 +6,13 @@
 #    By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/09 07:16:48 by lulm              #+#    #+#              #
-#    Updated: 2024/02/01 11:25:18 by lulm             ###   ########.fr        #
+#    Updated: 2024/06/12 16:47:48 by lulm             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	= libftprintf.a
 
-CC		= gcc
+CC		= cc
 
 CFLAGS	= -Wall -Werror -Wextra
 

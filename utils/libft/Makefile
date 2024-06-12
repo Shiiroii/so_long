@@ -6,14 +6,14 @@
 #    By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/05 12:45:50 by lulm              #+#    #+#              #
-#    Updated: 2024/06/10 12:58:53 by lulm             ###   ########.fr        #
+#    Updated: 2024/06/12 16:47:43 by lulm             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
 NAME = libft.a
 
-CC		= gcc
+CC		= cc
 
 CFLAGS	= -Wall -Werror -Wextra
 
