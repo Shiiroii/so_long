@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 09:14:13 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/11 17:20:05 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/12 16:12:19 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,14 +28,6 @@ void	image_checker(t_game_init *init_game, void **image, char *path)
 void	image_init(t_game_init *init_game)
 {
 	image_checker(init_game, &init_game->init_obj.player,
-		"./textures/player.xpm");
-	image_checker(init_game, &init_game->init_obj.player_up,
-		"./textures/player.xpm");
-	image_checker(init_game, &init_game->init_obj.player_down,
-		"./textures/player.xpm");
-	image_checker(init_game, &init_game->init_obj.player_left,
-		"./textures/player.xpm");
-	image_checker(init_game, &init_game->init_obj.player_right,
 		"./textures/player.xpm");
 	image_checker(init_game, &init_game->init_obj.wall,
 		"./textures/wall.xpm");

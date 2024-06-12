@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 08:38:36 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/11 16:44:56 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/12 16:05:19 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,7 +111,6 @@ int	open_map(char *map, t_game_init *init_game)
 	}
 	if (!read_map(fd, init_game))
 	{
-		ft_printf("testdfsd");
 		close(fd);
 		free_map(init_game);
 		return (0);
