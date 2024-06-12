@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 20:36:30 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/12 16:47:17 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/12 17:35:33 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@
 # define TRUE 1
 # define FALSE 0
 
-# define CELL_SIZE 20
+# define IMG_SIZE 20
 
 // =================================================================
 
@@ -123,6 +123,7 @@ void	start_game(t_game_init *init_game);
 int		exit_program(t_game_init *init_game);
 void	restart(t_game_init *init_game);
 int		ft_moving(t_game_init *init_game, int col, int row);
+void	you_win(t_game_init *init_game);
 
 // ================================ MAP =================================
 
@@ -131,6 +132,7 @@ int		draw_map(t_game_init *init_game);
 int		map_dimension(t_game_init *init_game);
 int		map_extension(char *map);
 int		is_map_valid(t_game_init *init_game);
+void	floodfill(t_game_init *init_game, int row, int col);
 
 // ============================ INITIALIZE ==============================
 

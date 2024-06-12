@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 08:19:58 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/12 16:12:06 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/12 17:00:43 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	ft_place(t_game_init *init_game, void *img, int x, int y)
 {
 	mlx_put_image_to_window(init_game->mlxptr, init_game->winptr,
-		img, x * CELL_SIZE, y * CELL_SIZE);
+		img, x * IMG_SIZE, y * IMG_SIZE);
 }
 
 void	ft_finish_exits(t_game_init *init_game, int col, int row)

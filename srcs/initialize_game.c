@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 09:14:13 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/12 16:12:19 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/12 17:00:43 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ void	initialize_game(t_game_init	*init_game)
 	init_game->game_data.move_count = 0;
 	image_init(init_game);
 	init_game->winptr = mlx_new_window(init_game->mlxptr,
-			init_game->map_data.res.width * CELL_SIZE,
-			init_game->map_data.res.height * CELL_SIZE, "so_long");
+			init_game->map_data.res.width * IMG_SIZE,
+			init_game->map_data.res.height * IMG_SIZE, "so_long");
 	if (!init_game->winptr)
 		error_init(1);
 }
