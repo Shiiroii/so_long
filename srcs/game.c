@@ -18,10 +18,10 @@ void	player_position(t_game_init *init_game)
 	int	row;
 
 	row = 0;
-	while (init_game->map_data.matrice[row] != NULL)
+	while (init_game->map_data.matrice[row])
 	{
 		col = 0;
-		while (init_game->map_data.matrice[row][col] != '\0')
+		while (init_game->map_data.matrice[row][col])
 		{
 			if (init_game->map_data.matrice[row][col] == PLAYER)
 			{
