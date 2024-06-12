@@ -75,6 +75,10 @@ void	free_map(t_game_init *init_game)
 void	free_image(t_game_init *init_game)
 {
 	mlx_destroy_image(init_game->mlxptr, init_game->init_obj.player);
+	mlx_destroy_image(init_game->mlxptr, init_game->init_obj.player_up);
+	mlx_destroy_image(init_game->mlxptr, init_game->init_obj.player_down);
+	mlx_destroy_image(init_game->mlxptr, init_game->init_obj.player_left);
+	mlx_destroy_image(init_game->mlxptr, init_game->init_obj.player_right);
 	mlx_destroy_image(init_game->mlxptr, init_game->init_obj.wall);
 	mlx_destroy_image(init_game->mlxptr, init_game->init_obj.floor);
 	mlx_destroy_image(init_game->mlxptr, init_game->init_obj.collectible);
