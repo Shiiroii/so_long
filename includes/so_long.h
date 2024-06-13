@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 20:36:30 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/12 17:35:33 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/13 10:54:52 by lionelulm        ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,8 @@ int		draw_map(t_game_init *init_game);
 int		map_dimension(t_game_init *init_game);
 int		map_extension(char *map);
 int		is_map_valid(t_game_init *init_game);
-void	floodfill(t_game_init *init_game, int row, int col);
+void	floodfill(t_game_init *init_game, int x, int y);
+void	player_position(t_game_init *init_game);
 
 // ============================ INITIALIZE ==============================
 
