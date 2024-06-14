@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 09:50:02 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/11 16:26:32 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/14 11:19:49 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,15 +35,6 @@ void	player_position(t_game_init *init_game)
 	}
 }
 
-void	you_win(t_game_init *init_game)
-{
-	init_game->map_data.matrice[init_game->init_pos.row]
-	[init_game->init_pos.col] = FLOOR;
-	init_game->game_data.move_count++;
-	ft_printf("You won, congrats!\n");
-	exit_program(init_game);
-}
-
 int	print_count_moves(t_game_init *init_game)
 {
 	static int	starting_count = -1;
@@ -52,7 +43,7 @@ int	print_count_moves(t_game_init *init_game)
 	player_count = init_game->game_data.move_count;
 	if (player_count != starting_count)
 	{
-		ft_printf("You moved %d times!\n", player_count);
+		ft_printf("You've made %d moves\n", player_count);
 		starting_count = player_count;
 	}
 	return (1);
@@ -92,4 +83,7 @@ void	start_game(t_game_init *init_game)
 	mlx_hook(init_game->mlxptr, 17, 0, exit_program, init_game);
 	mlx_hook(init_game->winptr, 2, (1L << 0), ft_moves, init_game);
 	mlx_loop_hook(init_game->mlxptr, &draw_map, init_game);
+	ft_printf("Game started!\n");
 }
+
+//===========finished===========//

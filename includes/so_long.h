@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lionelulm <lionelulm@student.42.fr>        +#+  +:+       +#+        */
+/*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 20:36:30 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/13 10:54:52 by lionelulm        ###   ########.fr       */
+/*   Updated: 2024/06/14 11:10:27 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,7 @@
 // ============================== UTILS ============================
 
 # define FILES 1
-
-# define TRUE 1
-# define FALSE 0
-
-# define IMG_SIZE 20
+# define IMG_SIZE 20 // textures are 20x20 pixels
 
 // =================================================================
 
@@ -134,6 +130,7 @@ int		map_extension(char *map);
 int		is_map_valid(t_game_init *init_game);
 void	floodfill(t_game_init *init_game, int x, int y);
 void	player_position(t_game_init *init_game);
+void	valid_path(t_game_init *init_game);
 
 // ============================ INITIALIZE ==============================
 
@@ -142,13 +139,10 @@ void	initialize_game(t_game_init	*init_game);
 // =============================== UTILS ===============================
 
 void	error_map(int nb);
-void	error_init(int nb);
 int		ft_moves(int key, t_game_init *init_game);
 void	free_image(t_game_init *init_game);
 void	free_map(t_game_init *init_game);
 
 // ======================================================================
-
-
 
 #endif
