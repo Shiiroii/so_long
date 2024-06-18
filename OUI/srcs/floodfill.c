@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/12 17:30:08 by lulm              #+#    #+#             */
-/*   Updated: 2024/06/18 19:20:33 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/18 21:23:45 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,29 @@
 
 #include <fcntl.h>
 #include <unistd.h>
+
+void	flood_player_position(t_game_init *init_game)
+{
+	int	col;
+	int	row;
+
+	row = 0;
+	while (init_game->map_data_temp.matrice[row])
+	{
+		col = 0;
+		while (init_game->map_data_temp.matrice[row][col])
+		{
+			if (init_game->map_data_temp.matrice[row][col] == PLAYER)
+			{
+				init_game->init_pos.col = col;
+				init_game->init_pos.row = row;
+				return ;
+			}
+			col++;
+		}
+		row++;
+	}
+}
 
 int	count_collectible(t_game_init *init_game)
 {
@@ -42,7 +65,7 @@ int	floodfill(t_game_init *init_game, int x, int y)
 	int	count;
 
 	count = 0;
-	player_position(init_game);
+	flood_player_position(init_game);
 	if (init_game->map_data_temp.matrice[x][y] == 'E'
 		|| init_game->map_data_temp.matrice[x][y] == 'C')
 		count++;

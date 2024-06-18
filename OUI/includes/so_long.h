@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 20:36:30 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/18 19:20:57 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/18 21:20:22 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,7 +138,7 @@ int		count_collectible(t_game_init *init_game);
 
 void	initialize_game(t_game_init	*init_game);
 int		read_checker(t_game_init *init_game);
-int		copy_read_map(int fd, t_game_init *init_game);
+int		copy_map(t_game_init *init_game);
 
 // =============================== UTILS ===============================
 
@@ -146,6 +146,7 @@ void	error_map(int nb);
 int		ft_moves(int key, t_game_init *init_game);
 void	free_image(t_game_init *init_game);
 void	free_map(t_game_init *init_game);
+void	free_copy_map(t_game_init *init_game);
 
 // ======================================================================
 

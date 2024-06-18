@@ -6,35 +6,64 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 17:38:05 by lulm              #+#    #+#             */
-/*   Updated: 2024/06/18 19:24:18 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/18 21:28:31 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	copy_read_map(int fd, t_game_init *init_game, char **tab)
+void	free_copy_map(t_game_init *init_game)
 {
-	int		i;
-	char	*line;
+	int	i;
 
-	init_game->map_data_temp.matrice
-		= ft_calloc(init_game->map_data_temp.first_mat + 1, sizeof(char *));
-	if (!init_game->map_data_temp.matrice)
+	if (init_game->map_data_temp.matrice == NULL)
+		return ;
+	i = 0;
+	while (init_game->map_data_temp.matrice[i])
 	{
-		free_map(init_game);
+		free(init_game->map_data_temp.matrice[i]);
+		i++;
+	}
+	free(init_game->map_data_temp.matrice);
+	init_game->map_data_temp.matrice = NULL;
+	return ;
+}
+
+int	copy_map(t_game_init *init_game)
+{
+	int	i;
+
+	i = 0;
+	while (init_game->map_data.matrice[i])
+		i++;
+	init_game->map_data_temp.matrice
+		= ft_calloc(init_game->map_data_temp.first_mat
+			+ (i + 1), sizeof(char *));
+	if (init_game->map_data_temp.matrice == NULL)
+	{
+		error_map(1);
 		return (0);
 	}
 	i = 0;
-	line = NULL;
-	while (1)
+	while (init_game->map_data.matrice[i])
 	{
-		line = get_next_line(fd);
-		if (!line)
-			break ;
-		init_game->map_data_temp.matrice[i] = line;
+		init_game->map_data_temp.matrice[i]
+			= ft_strdup(init_game->map_data.matrice[i]);
+		if (init_game->map_data_temp.matrice[i] == NULL)
+		{
+			free_copy_map(init_game);
+			error_map(1);
+			return(0);
+		}
 		i++;
 	}
-	if (!read_checker(init_game))
+	init_game->map_data_temp.row_mat = init_game->map_data.row_mat;
+	init_game->map_data_temp.col_mat = init_game->map_data.col_mat;
+	if (init_game->init_obj.collectible == NULL)
+	{
+		free_copy_map(init_game);
+		error_map(1);
 		return (0);
+	}
 	return (1);
 }
