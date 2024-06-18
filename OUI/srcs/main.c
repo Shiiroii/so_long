@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/07 15:04:28 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/14 18:04:59 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/18 16:33:41 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,6 @@ int	main(int argc, char **argv)
 		error_map(2);
 	game.argc_temp = argc;
 	game.argv_temp = argv;
-	if (!copy_map(&game))
-		error_map(1);
 	if (open_map(argv[1], &game))
 	{
 		initialize_game(&game);

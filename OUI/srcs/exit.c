@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 09:50:05 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/14 11:20:05 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/18 20:34:18 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,20 +26,20 @@ void	clean_all(t_game_init *init_game)
 	}
 }
 
-void	free_map(t_game_init *init_game)
+void	free_map(t_game_init *init_game, char **map)
 {
 	int	i;
 
-	if (init_game->map_data.matrice == NULL)
+	if (map == NULL)
 		return ;
 	i = 0;
-	while (init_game->map_data.matrice[i])
+	while (map[i])
 	{
-		free(init_game->map_data.matrice[i]);
+		free(map[i]);
 		i++;
 	}
-	free(init_game->map_data.matrice);
-	init_game->map_data.matrice = NULL;
+	free(map);
+	map = NULL;
 	return ;
 }
 

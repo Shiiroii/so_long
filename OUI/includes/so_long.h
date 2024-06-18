@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 20:36:30 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/14 17:53:11 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/18 19:20:57 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,15 +129,16 @@ int		draw_map(t_game_init *init_game);
 int		map_dimension(t_game_init *init_game);
 int		map_extension(char *map);
 int		is_map_valid(t_game_init *init_game);
-void	floodfill(t_game_init *init_game, int x, int y);
+int		floodfill(t_game_init *init_game, int x, int y);
 void	player_position(t_game_init *init_game);
 void	valid_path(t_game_init *init_game);
+int		count_collectible(t_game_init *init_game);
 
 // ============================ INITIALIZE ==============================
 
 void	initialize_game(t_game_init	*init_game);
-int		copy_map(t_game_init *init_game);
-void	copy_player_position(t_game_init *init_game);
+int		read_checker(t_game_init *init_game);
+int		copy_read_map(int fd, t_game_init *init_game);
 
 // =============================== UTILS ===============================
 

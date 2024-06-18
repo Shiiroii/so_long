@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 08:38:36 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/14 11:04:32 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/18 19:34:34 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,14 +66,13 @@ int	read_checker(t_game_init *init_game)
 	return (1);
 }
 
-int	read_map(int fd, t_game_init *init_game)
+int	read_map(int fd, t_game_init *init_game, char **map)
 {
 	int		i;
 	char	*line;
 
-	init_game->map_data.matrice
-		= ft_calloc(init_game->map_data.first_mat + 1, sizeof(char *));
-	if (!init_game->map_data.matrice)
+	map = ft_calloc(init_game->map_data.first_mat + 1, sizeof(char *));
+	if (!map)
 	{
 		free_map(init_game);
 		return (0);
@@ -85,7 +84,7 @@ int	read_map(int fd, t_game_init *init_game)
 		line = get_next_line(fd);
 		if (!line)
 			break ;
-		init_game->map_data.matrice[i] = line;
+		map[i] = line;
 		i++;
 	}
 	if (!read_checker(init_game))
@@ -109,7 +108,7 @@ int	open_map(char *map, t_game_init *init_game)
 		free_map(init_game);
 		return (0);
 	}
-	if (!read_map(fd, init_game))
+	if (!read_map(fd, init_game,))
 	{
 		close(fd);
 		free_map(init_game);
