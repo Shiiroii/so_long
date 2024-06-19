@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 20:36:30 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/14 11:10:27 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/19 16:03:23 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,7 @@ typedef struct s_game_init
 	int			argc_temp;
 	char		**argv_temp;
 	t_map_data	map_data;
+	t_map_data	map_data_temp;
 	t_game_data	game_data;
 	t_game_pos	init_pos;
 	t_game_res	init_res;
@@ -128,13 +129,16 @@ int		draw_map(t_game_init *init_game);
 int		map_dimension(t_game_init *init_game);
 int		map_extension(char *map);
 int		is_map_valid(t_game_init *init_game);
-void	floodfill(t_game_init *init_game, int x, int y);
+int		floodfill(t_game_init *init_game, int x, int y);
 void	player_position(t_game_init *init_game);
 void	valid_path(t_game_init *init_game);
+int		count_collectible(t_game_init *init_game);
 
 // ============================ INITIALIZE ==============================
 
 void	initialize_game(t_game_init	*init_game);
+int		read_checker(t_game_init *init_game);
+int		copy_map(t_game_init *init_game);
 
 // =============================== UTILS ===============================
 
@@ -142,6 +146,7 @@ void	error_map(int nb);
 int		ft_moves(int key, t_game_init *init_game);
 void	free_image(t_game_init *init_game);
 void	free_map(t_game_init *init_game);
+void	free_copy_map(t_game_init *init_game);
 
 // ======================================================================
 

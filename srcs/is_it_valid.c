@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 11:16:20 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/14 15:44:29 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/19 16:03:32 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,13 +90,18 @@ int	valid_map_borders(t_game_init *init_game)
 
 int	is_map_valid(t_game_init *init_game)
 {
-	valid_path(init_game);
+	if (!(copy_map(init_game)))
+		return (0);
+	player_position(init_game);
+	if (floodfill(init_game, init_game->init_pos.col, init_game->init_pos.row)
+		!= count_collectible(init_game) + 1)
+		return (0);
 	if (!(valid_map_objs(init_game)))
 		return (0);
 	if (!(valid_map_borders(init_game)))
 		return (0);
 	if (!(valid_map_walls(init_game)))
 		return (0);
+	free_copy_map(init_game);
 	return (1);
 }
-

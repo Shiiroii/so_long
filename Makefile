@@ -6,7 +6,7 @@
 #    By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/06/07 17:14:24 by lulm              #+#    #+#              #
-#    Updated: 2024/06/12 17:33:44 by lulm             ###   ########.fr        #
+#    Updated: 2024/06/19 16:02:54 by lulm             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRCS	=	srcs/errors.c			\
 			srcs/initialize_map.c	\
 			srcs/initialize_utils.c	\
 			srcs/is_it_valid.c		\
+			srcs/copy_map.c			\
 			srcs/floodfill.c
 
 OBJS	= $(SRCS:.c=.o)
