@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 09:50:02 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/14 11:19:49 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/19 16:49:22 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ int	ft_moving(t_game_init *init_game, int col, int row)
 
 void	start_game(t_game_init *init_game)
 {
-	mlx_hook(init_game->mlxptr, 17, 0, exit_program, init_game);
+	mlx_hook(init_game->winptr, 17, 0, exit_program, init_game);
 	mlx_hook(init_game->winptr, 2, (1L << 0), ft_moves, init_game);
 	mlx_loop_hook(init_game->mlxptr, &draw_map, init_game);
 	ft_printf("Game started!\n");

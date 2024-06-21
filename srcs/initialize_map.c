@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 08:38:36 by lionelulm         #+#    #+#             */
-/*   Updated: 2024/06/14 11:04:32 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/19 17:09:54 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,8 @@ int	open_map(char *map, t_game_init *init_game)
 	if (fd == -1)
 		return (0);
 	init_game->map_data.first_mat = count_read_map(map);
-	if (!init_game->map_data.first_mat || init_game->map_data.first_mat < 3)
+	if (!init_game->map_data.first_mat || init_game->map_data.first_mat < 3
+		|| init_game->map_data.first_mat > 101)
 	{
 		close(fd);
 		free_map(init_game);

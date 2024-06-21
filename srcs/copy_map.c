@@ -6,7 +6,7 @@
 /*   By: lulm <lulm@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/14 17:38:05 by lulm              #+#    #+#             */
-/*   Updated: 2024/06/19 14:26:04 by lulm             ###   ########.fr       */
+/*   Updated: 2024/06/21 16:09:48 by lulm             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,20 +29,10 @@ void	free_copy_map(t_game_init *init_game)
 	return ;
 }
 
-int	copy_map(t_game_init *init_game)
+int	utils_copy_map(t_game_init *init_game)
 {
 	int	i;
 
-	i = 0;
-	while (init_game->map_data.matrice[i])
-		i++;
-	init_game->map_data_temp.matrice
-		= ft_calloc(init_game->map_data_temp.first_mat + i + 1, sizeof(char *));
-	if (init_game->map_data_temp.matrice == NULL)
-	{
-		error_map(1);
-		return (0);
-	}
 	i = 0;
 	while (init_game->map_data.matrice[i])
 	{
@@ -56,6 +46,24 @@ int	copy_map(t_game_init *init_game)
 		}
 		i++;
 	}
+	return (1);
+}
+
+int	copy_map(t_game_init *init_game)
+{
+	int	i;
+
+	i = 0;
+	while (init_game->map_data.matrice[i])
+		i++;
+	init_game->map_data_temp.matrice
+		= ft_calloc(init_game->map_data.first_mat + 1, sizeof(char *));
+	if (init_game->map_data_temp.matrice == NULL)
+	{
+		error_map(1);
+		return (0);
+	}
+	utils_copy_map(init_game);
 	init_game->map_data_temp.matrice[i] = NULL;
 	return (1);
 }
